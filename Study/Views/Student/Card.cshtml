@@ -1,0 +1,29 @@
+﻿@{
+    ViewBag.Title = $"Student" + ViewBag.Student.Name;
+}
+
+<div class="jumbotron">
+    <h1>Student @ViewBag.Student.Name</h1>
+</div>
+
+<div class="row">
+    <div class="col-md-6">
+        <div class="row">
+            <div class="col-md-2">
+                Id
+            </div>
+            <div class="col-md-10">
+                <span id="Id">@ViewBag.Student.Id</span>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-2">
+                Name
+            </div>
+            <div class="col-md-10">
+                <input id="Name" value="@ViewBag.Student.Name" />
+            </div>
+        </div>
+    </div>
+</div>
