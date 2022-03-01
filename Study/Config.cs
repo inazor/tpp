@@ -8,6 +8,6 @@ namespace Study
 {
     public static class Config
     {
-        public const string RootDirectory = "D:\\Study";
+        public const string RootDirectory = "D:\\TPP\\Study";
     }
 }
