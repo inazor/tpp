@@ -29,11 +29,11 @@ namespace Study.EndToEndTests
         {
             NavigateHome();
 
-            var studentListLinkElement = _driver.FindElement(By.LinkText("Student/List"));
+            var studentListLinkElement = _driver.FindElement(By.LinkText("Studenti"));
 
             studentListLinkElement.Click();
 
-            var jumbotronTitleElement = _driver.FindElement(By.XPath("/h1"));
+            var jumbotronTitleElement = _driver.FindElement(By.XPath("//h1"));
 
             Assert.That(jumbotronTitleElement.Text, Is.EqualTo("studenti").IgnoreCase);
         }
