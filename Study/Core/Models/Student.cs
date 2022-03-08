@@ -1,4 +1,4 @@
-﻿using Study.Core.Repositories;
+using Study.Core.Repositories;
 using Study.Persistence.Repositories;
 using System;
 using System.Collections.Generic;
@@ -15,7 +15,7 @@ namespace Study.Models
         public string Name { get; set; }
         public int Level { get; set; }
         public Course Course { get; set; }
-        public int CourseId { get; set; }
+        public int? CourseId { get; set; }
 
         public Student()
         {
