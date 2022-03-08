@@ -1,4 +1,4 @@
-﻿using Study.Persistence;
+using Study.Persistence;
 using Study.Persistence.Repositories;
 using System;
 using System.Collections.Generic;
@@ -21,8 +21,9 @@ namespace Study.Controllers
         public ActionResult Card(int id)
         {
             var studentRepository = new StudentRepository();
-            var student = studentRepository.GetById(id);
+            var student = studentRepository.GetStudentWithCourse(id);
             ViewBag.Student = student;
+            
             return View();
         }
     }
