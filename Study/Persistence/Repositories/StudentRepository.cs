@@ -1,4 +1,4 @@
-﻿using Study.Core.Repositories;
+using Study.Core.Repositories;
 using Study.Models;
 using System;
 using System.Collections.Generic;
@@ -32,7 +32,17 @@ namespace Study.Persistence.Repositories
         public Student GetStudentWithCourse(int id)
         {
             var student = _sqliteDataAccess.GetById<Student>(id);
-            student.Course = _sqliteDataAccess.GetById<Course>(student.CourseId);
+
+            if(student.CourseId != null)
+            {
+                student.Course = _sqliteDataAccess.GetById<Course>((int)student.CourseId);
+            }
+            else
+            {
+                student.Course = null;
+            }
+
+            
             return student;
         }
     }
