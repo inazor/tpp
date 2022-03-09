@@ -7,9 +7,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Study", "Study\Study.csproj
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Study.UnitTests", "Study.UnitTests\Study.UnitTests.csproj", "{73D81E03-ABDF-441A-B116-0D01BEE41953}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Study.IntegrationTests", "Study.IntegrationTests\Study.IntegrationTests.csproj", "{8DA1E6DC-314F-40C3-A74F-E6A41C321005}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Study.IntegrationTests", "Study.IntegrationTests\Study.IntegrationTests.csproj", "{8DA1E6DC-314F-40C3-A74F-E6A41C321005}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Study.EndToEndTests", "Study.EndToEndTests\Study.EndToEndTests.csproj", "{405AE28E-7412-429D-AED5-9B9C145CE98E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Study.EndToEndTests", "Study.EndToEndTests\Study.EndToEndTests.csproj", "{405AE28E-7412-429D-AED5-9B9C145CE98E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Vjezba1", "Vjezba1\Vjezba1.csproj", "{4422D556-CD61-4D8B-869A-43C5EDFF2061}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{405AE28E-7412-429D-AED5-9B9C145CE98E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{405AE28E-7412-429D-AED5-9B9C145CE98E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{405AE28E-7412-429D-AED5-9B9C145CE98E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4422D556-CD61-4D8B-869A-43C5EDFF2061}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4422D556-CD61-4D8B-869A-43C5EDFF2061}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4422D556-CD61-4D8B-869A-43C5EDFF2061}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4422D556-CD61-4D8B-869A-43C5EDFF2061}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
