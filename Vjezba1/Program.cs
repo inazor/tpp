@@ -305,10 +305,23 @@ namespace Vjezba1
                 Console.WriteLine("Ime:");
                 string ime = Console.ReadLine();
                 Console.WriteLine("Plaća (decimalni broj):");
-                double placa = Double.Parse(Console.ReadLine());
+                string unos = Console.ReadLine();
 
-                var djelatnik = new Djelatnik(ime, placa);
-                Console.WriteLine(djelatnik.OpisPlace());
+                try
+                {
+                    double placa = Convert.ToDouble(unos);
+                    if (placa < 0 || placa > 100000)
+                    {
+                        throw new Exception();
+                    }
+
+                    var djelatnik = new Djelatnik(ime, placa);
+                    Console.WriteLine(djelatnik.OpisPlace());
+                }
+                catch (Exception)
+                {
+                    Console.WriteLine("Unos mora biti između 0 i 100000");
+                }
             }
         }
     }
