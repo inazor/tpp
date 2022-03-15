@@ -19,7 +19,7 @@ namespace Study.Models
 
         public Student()
         {
-            _studentRepository = new StudentRepository();
+            _studentRepository = new StudentRepository(Config.DataAccess);
         }
 
         public Student(IStudentRepository studentRepository)

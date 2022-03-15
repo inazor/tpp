@@ -9,17 +9,12 @@ namespace Study.Persistence.Repositories
 {
     public class CourseRepository : Repository<Course>, ICourseRepository
     {
-        private IDataAccess _sqliteDataAccess;
-
-        public CourseRepository(IDataAccess sqliteDataAccess = null) : base(sqliteDataAccess)
-        {
-            _sqliteDataAccess = sqliteDataAccess ?? new SqliteDataAccess();
-        }
+        public CourseRepository(IDataAccess dataAccess) : base(dataAccess){}
 
         public Course GetCourseWithStudents(int id)
         {
-            var students = _sqliteDataAccess.GetEntitites<Student>();
-            var course = _sqliteDataAccess.GetById<Course>(id);
+            var students = DataAccess.GetEntitites<Student>();
+            var course = DataAccess.GetById<Course>(id);
 
             course.Students = new List<Student>();
             foreach (var student in students)

@@ -8,36 +8,36 @@ namespace Study.Persistence.Repositories
 {
     public class Repository<T> : IRepository<T> where T : class
     {
-        protected readonly IDataAccess SqliteDataAccess;
+        protected IDataAccess DataAccess;
 
-        public Repository(IDataAccess sqliteDataAccess = null)
+        public Repository(IDataAccess dataAccess)
         {
-            SqliteDataAccess = sqliteDataAccess ?? new SqliteDataAccess();
+            DataAccess = dataAccess;
         }
 
         public void Add(T entity)
         {
-            SqliteDataAccess.SaveEntity(entity);
+            DataAccess.SaveEntity(entity);
         }
 
         public IEnumerable<T> GetAll()
         {
-            return SqliteDataAccess.GetEntitites<T>();
+            return DataAccess.GetEntitites<T>();
         }
 
         public T GetById(int id)
         {
-            return SqliteDataAccess.GetById<T>(id);
+            return DataAccess.GetById<T>(id);
         }
 
         public void Update(int id, T entity)
         {
-            SqliteDataAccess.Update(id, entity);
+            DataAccess.Update(id, entity);
         }
 
         public void Remove(int id)
         {
-            SqliteDataAccess.Remove<T>(id);
+            DataAccess.Remove<T>(id);
         }
     }
 }

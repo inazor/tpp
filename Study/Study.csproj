@@ -191,7 +191,7 @@
     <Content Include="Content\Site.css" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
-    <Content Include="Student.json" />
+    <Content Include="Persistence\JsonData\Student.json" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -222,7 +222,7 @@
     </Content>
     <Content Include="Views\Student\List.cshtml" />
     <Content Include="Views\Student\Card.cshtml" />
-    <Content Include="Course.json" />
+    <Content Include="Persistence\JsonData\Course.json" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

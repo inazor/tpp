@@ -10,9 +10,10 @@ namespace Study.Controllers
 {
     public class StudentController : Controller
     {
+        private StudentRepository studentRepository = new StudentRepository(Config.DataAccess);
+
         public ActionResult List()
         {
-            var studentRepository = new StudentRepository();
             var students = studentRepository.GetAll();
             ViewBag.Students = students;
             return View();
@@ -20,7 +21,6 @@ namespace Study.Controllers
 
         public ActionResult Card(int id)
         {
-            var studentRepository = new StudentRepository();
             var student = studentRepository.GetStudentWithCourse(id);
             ViewBag.Student = student;
             

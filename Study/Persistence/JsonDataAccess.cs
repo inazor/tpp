@@ -9,6 +9,7 @@ namespace Study.Persistence
 {
     public class JsonDataAccess : IDataAccess
     {
+
         public T GetById<T>(int id) where T : class
         {
             var items = GetEntitites<T>();
@@ -20,7 +21,7 @@ namespace Study.Persistence
 
         public IEnumerable<T> GetEntitites<T>() where T : class
         {
-            var fileName = Path.Combine(Config.RootDirectory, "Study", $"{typeof(T).Name}.json");
+            var fileName = Path.Combine(Config.RootDirectory, "Study", "Persistence", "JsonData", $"{typeof(T).Name}.json");
 
             using (StreamReader reader = new StreamReader(fileName))
             {
