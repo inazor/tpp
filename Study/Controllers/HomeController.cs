@@ -10,13 +10,15 @@ namespace Study.Controllers
 {
     public class HomeController : Controller
     {
+        private StudentRepository studentRepository = new StudentRepository(Config.DataAccess);
+        private CourseRepository courseRepository = new CourseRepository(Config.DataAccess);
+
+
         public ActionResult Index()
         {
-            var studentRepository = new StudentRepository();
             var students = studentRepository.GetAll();
             ViewBag.Students = students;
 
-            var courseRepository = new CourseRepository();
             var courses = courseRepository.GetAll();
             ViewBag.Courses = courses;
 

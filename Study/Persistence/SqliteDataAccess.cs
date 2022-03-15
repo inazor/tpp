@@ -98,7 +98,7 @@ namespace Study.Persistence
             //var b = ConfigurationManager.AppSettings;
             //return ConfigurationManager.ConnectionStrings[id].ConnectionString;
 
-            return $"Data Source={Path.Combine(Config.RootDirectory, "Study\\StudyDB.db")};Version=3";
+            return $"Data Source={Path.Combine(Config.RootDirectory, "Study", "StudyDB.db")};Version=3";
         }
     }
 }
