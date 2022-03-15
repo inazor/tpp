@@ -8,9 +8,9 @@ namespace Study.Persistence.Repositories
 {
     public class Repository<T> : IRepository<T> where T : class
     {
-        protected readonly ISqliteDataAccess SqliteDataAccess;
+        protected readonly IDataAccess SqliteDataAccess;
 
-        public Repository(ISqliteDataAccess sqliteDataAccess = null)
+        public Repository(IDataAccess sqliteDataAccess = null)
         {
             SqliteDataAccess = sqliteDataAccess ?? new SqliteDataAccess();
         }

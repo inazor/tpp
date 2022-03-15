@@ -9,9 +9,9 @@ namespace Study.Persistence.Repositories
 {
     public class CourseRepository : Repository<Course>, ICourseRepository
     {
-        private ISqliteDataAccess _sqliteDataAccess;
+        private IDataAccess _sqliteDataAccess;
 
-        public CourseRepository(ISqliteDataAccess sqliteDataAccess = null) : base(sqliteDataAccess)
+        public CourseRepository(IDataAccess sqliteDataAccess = null) : base(sqliteDataAccess)
         {
             _sqliteDataAccess = sqliteDataAccess ?? new SqliteDataAccess();
         }

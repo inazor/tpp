@@ -1,0 +1,20 @@
+﻿[
+  {
+    "Id": 1,
+    "Name": "Marko",
+    "Level": 5,
+    "CourseId": 1
+  },
+  {
+    "Id": 2,
+    "Name": "Ante",
+    "Level": 6,
+    "CourseId": 1
+  },
+  {
+    "Id": 3,
+    "Name": "Ana",
+    "Level": 6,
+    "CourseId": 2
+  }
+]
