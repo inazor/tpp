@@ -12,7 +12,7 @@ using System.Web.Configuration;
 
 namespace Study.Persistence
 {
-    public class SqliteDataAccess : ISqliteDataAccess
+    public class SqliteDataAccess : IDataAccess
     {
         public IEnumerable<T> GetEntitites<T>() where T: class
         {

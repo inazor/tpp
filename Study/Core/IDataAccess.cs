@@ -2,7 +2,7 @@
 
 namespace Study.Persistence
 {
-    public interface ISqliteDataAccess
+    public interface IDataAccess
     {
         IEnumerable<T> GetEntitites<T>() where T : class;
         void SaveEntity<T>(T entity) where T : class;
