@@ -173,7 +173,6 @@
     <Compile Include="Models\Course.cs" />
     <Compile Include="Models\Student.cs" />
     <Compile Include="DataAccess\Interfaces\IDataAccess.cs" />
-    <Compile Include="DataAccess\JsonDataAccess.cs" />
     <Compile Include="DataAccess\SqliteDataAccess.cs" />
     <Compile Include="DataAccess\Repositories\CourseRepository.cs" />
     <Compile Include="DataAccess\Repositories\Repository.cs" />
