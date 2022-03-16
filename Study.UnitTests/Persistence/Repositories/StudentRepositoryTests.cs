@@ -14,13 +14,13 @@ namespace Study.UnitTests.Persistence.Repositories
     [TestFixture]
     public class StudentRepositoryTests
     {
-        private Mock<ISqliteDataAccess> _sqliteDataAccess;
+        private Mock<IDataAccess> _sqliteDataAccess;
         private StudentRepository _sut;
 
         [SetUp]
         public void SetUp()
         {
-            _sqliteDataAccess = new Mock<ISqliteDataAccess>();
+            _sqliteDataAccess = new Mock<IDataAccess>();
 
             var student = new Student
             {
