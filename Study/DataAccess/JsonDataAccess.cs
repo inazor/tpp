@@ -21,14 +21,7 @@ namespace Study.Persistence
 
         public IEnumerable<T> GetEntitites<T>() where T : class
         {
-            var fileName = Path.Combine(Config.RootDirectory, "Study", "Persistence", "JsonData", $"{typeof(T).Name}.json");
-
-            using (StreamReader reader = new StreamReader(fileName))
-            {
-                string json = reader.ReadToEnd();
-                List<T> items = JsonConvert.DeserializeObject<List<T>>(json);
-                return items;
-            }
+            return JsonUtil.ReadJsonFile<T>();
         }
 
         public void Remove<T>(int id) where T : class
