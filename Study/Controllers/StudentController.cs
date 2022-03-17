@@ -23,7 +23,10 @@ namespace Study.Controllers
         {
             var student = studentRepository.GetStudentWithCourse(id);
             ViewBag.Student = student;
-            
+
+            ViewBag.CourseId = student.Course?.Id;
+            ViewBag.CourseName = student.Course?.Name ?? "";
+
             return View();
         }
     }
