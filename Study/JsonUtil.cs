@@ -9,15 +9,19 @@ namespace Study
 {
     public static class JsonUtil
     {
-        public static List<T> ReadJsonFile<T>()
+        public static List<T> DeserializeJsonToType<T>(string fileName)
         {
-            var fileName = Path.Combine(Config.RootDirectory, "Study", "DataAccess", "JsonData", $"{typeof(T).Name}.json");
+            var json = ReadJsonFile(fileName);
+            List<T> result = JsonConvert.DeserializeObject<List<T>>(json);
+            return result;
+        }
 
+        public static string ReadJsonFile(string fileName)
+        {
             using (StreamReader reader = new StreamReader(fileName))
             {
-                string json = reader.ReadToEnd();
-                List<T> items = JsonConvert.DeserializeObject<List<T>>(json);
-                return items;
+                string result = reader.ReadToEnd();
+                return result;
             }
         }
     }

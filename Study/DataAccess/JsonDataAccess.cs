@@ -21,7 +21,9 @@ namespace Study.Persistence
 
         public IEnumerable<T> GetEntitites<T>() where T : class
         {
-            return JsonUtil.ReadJsonFile<T>();
+            var fileName = GetFileNameOfType<T>();
+            var result = JsonUtil.DeserializeJsonToType<T>(fileName);
+            return result;
         }
 
         public void Remove<T>(int id) where T : class
@@ -37,6 +39,12 @@ namespace Study.Persistence
         public void Update<T>(int id, T entity) where T : class
         {
             throw new NotImplementedException();
+        }
+
+        private string GetFileNameOfType<T>()
+        {
+            var fileName = Path.Combine(Config.RootDirectory, "Study", "DataAccess", "JsonData", $"{typeof(T).Name}.json");
+            return fileName;
         }
     }
 }
