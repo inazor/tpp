@@ -44,7 +44,9 @@ namespace Study.Persistence
 
         private string GetFileNameOfType<T>()
         {
-            var fileName = Path.Combine(Config.RootDirectory, "Study", "DataAccess", "JsonData", $"{typeof(T).Name}.json");
+            var specificClass = typeof(T);
+            var className = specificClass.Name;
+            var fileName = Path.Combine(Config.RootDirectory, "Study", "DataAccess", "JsonData", $"{className}.json");
             return fileName;
         }
     }
