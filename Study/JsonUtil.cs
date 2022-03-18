@@ -9,9 +9,8 @@ namespace Study
 {
     public static class JsonUtil
     {
-        public static List<T> DeserializeJsonToType<T>(string fileName)
+        public static List<T> DeserializeJsonToType<T>(string json)
         {
-            var json = ReadJsonFile(fileName);
             List<T> result = JsonConvert.DeserializeObject<List<T>>(json);
             return result;
         }

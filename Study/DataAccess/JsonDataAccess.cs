@@ -22,7 +22,8 @@ namespace Study.Persistence
         public IEnumerable<T> GetEntitites<T>() where T : class
         {
             var fileName = GetFileNameOfType<T>();
-            var result = JsonUtil.DeserializeJsonToType<T>(fileName);
+            var json = JsonUtil.ReadJsonFile(fileName);
+            var result = JsonUtil.DeserializeJsonToType<T>(json);
             return result;
         }
 
