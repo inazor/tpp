@@ -17,11 +17,10 @@ namespace Study
 
         public static string ReadJsonFile(string fileName)
         {
-            using (StreamReader reader = new StreamReader(fileName))
-            {
-                string result = reader.ReadToEnd();
-                return result;
-            }
+            StreamReader reader = new StreamReader(fileName);
+            string result = reader.ReadToEnd();
+            reader.Close();
+            return result;
         }
     }
 }
