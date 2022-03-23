@@ -20,6 +20,7 @@
                 <td>@student.Id</td>
                 <td>@student.Name</td>
                 <td>@Html.ActionLink("Uredi", $"Card/{student.Id}", "Student")</td>
+                <td>@Html.ActionLink("Izbriši", $"Delete/{student.Id}", "Student")</td>
             </tr>
             }
         </table>

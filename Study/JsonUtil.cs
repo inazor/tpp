@@ -15,6 +15,11 @@ namespace Study
             return result;
         }
 
+        public static string SerializeJson(object value)
+        {
+            return JsonConvert.SerializeObject(value);
+        }
+
         public static string ReadJsonFile(string fileName)
         {
             StreamReader reader = new StreamReader(fileName);

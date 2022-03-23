@@ -29,7 +29,16 @@ namespace Study.Persistence
 
         public void Remove<T>(int id) where T : class
         {
-            throw new NotImplementedException();
+            var items = GetEntitites<T>().ToList();
+            var idProperty = typeof(T).GetProperty("Id");
+            var item = items.FirstOrDefault(i => (int)idProperty.GetValue(i) == id);
+
+            var isRemoved = items.Remove(item);
+
+            var fileName = GetFileNameOfType<T>();
+            var content = JsonUtil.SerializeJson(items);
+
+            File.WriteAllText(fileName, content);
         }
 
         public void SaveEntity<T>(T entity) where T : class

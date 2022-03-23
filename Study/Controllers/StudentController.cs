@@ -12,6 +12,15 @@ namespace Study.Controllers
     {
         private StudentRepository studentRepository = new StudentRepository(Config.DataAccess);
 
+        public ActionResult Delete(int id)
+        {
+            studentRepository.Remove(id);
+
+            var students = studentRepository.GetAll();
+            ViewBag.Students = students;
+            return View("List");
+        }
+
         public ActionResult List()
         {
             var students = studentRepository.GetAll();
