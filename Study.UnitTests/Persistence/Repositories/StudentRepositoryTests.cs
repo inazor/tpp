@@ -45,7 +45,7 @@ namespace Study.UnitTests.Persistence.Repositories
         [Test]
         public void GetStudentWithCourse_WhenCalled_ReturnStudentObjectWithPopulatedCourseField()
         {
-            var student = _sut.GetStudentWithCourse(1);
+            var student = _sut.GetStudentWithCourseAndCity(1);
             Assert.That(student.Course, Is.Not.Null);
         }
     }

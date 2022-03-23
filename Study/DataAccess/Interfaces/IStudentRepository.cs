@@ -9,7 +9,7 @@ namespace Study.Core.Repositories
 {
     public interface IStudentRepository : IRepository<Student>
     {
-        Student GetStudentWithCourse(int id);
+        Student GetStudentWithCourseAndCity(int id);
         IEnumerable<Student> GetStudentsWithCourses();
     }
 }

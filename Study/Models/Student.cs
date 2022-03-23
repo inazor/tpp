@@ -16,6 +16,9 @@ namespace Study.Models
         public int Level { get; set; }
         public Course Course { get; set; }
         public int? CourseId { get; set; }
+        public City City { get; set; }
+        public int? CityId { get; set; }
+
 
         public Student()
         {

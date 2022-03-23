@@ -18,13 +18,13 @@ namespace Study.Persistence.Repositories
 
             foreach (var student in students)
             {
-                studentsWithCourses.Add(GetStudentWithCourse(student.Id));
+                studentsWithCourses.Add(GetStudentWithCourseAndCity(student.Id));
             }
 
             return studentsWithCourses;
         }
 
-        public Student GetStudentWithCourse(int id)
+        public Student GetStudentWithCourseAndCity(int id)
         {
             var student = DataAccess.GetById<Student>(id);
 
@@ -32,9 +32,10 @@ namespace Study.Persistence.Repositories
             {
                 student.Course = DataAccess.GetById<Course>((int)student.CourseId);
             }
-            else
+            
+            if(student.CityId != null)
             {
-                student.Course = null;
+                student.City = DataAccess.GetById<City>((int)student.CityId);
             }
             
             return student;

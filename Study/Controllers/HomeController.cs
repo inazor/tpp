@@ -1,4 +1,5 @@
-﻿using Study.Persistence;
+﻿using Study.DataAccess.Repositories;
+using Study.Persistence;
 using Study.Persistence.Repositories;
 using System;
 using System.Collections.Generic;
@@ -12,7 +13,7 @@ namespace Study.Controllers
     {
         private StudentRepository studentRepository = new StudentRepository(Config.DataAccess);
         private CourseRepository courseRepository = new CourseRepository(Config.DataAccess);
-
+        private CityRepository cityRepository = new CityRepository(Config.DataAccess);
 
         public ActionResult Index()
         {
@@ -21,6 +22,9 @@ namespace Study.Controllers
 
             var courses = courseRepository.GetAll();
             ViewBag.Courses = courses;
+
+            var cities = cityRepository.GetAll();
+            ViewBag.Cities = cities;
 
             return View();
         }

@@ -161,16 +161,19 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Config.cs" />
+    <Compile Include="Controllers\CityController.cs" />
     <Compile Include="Controllers\CourseController.cs" />
     <Compile Include="Controllers\StudentController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="DataAccess\Interfaces\ICourseRepository.cs" />
     <Compile Include="DataAccess\Interfaces\IRepository.cs" />
     <Compile Include="DataAccess\Interfaces\IStudentRepository.cs" />
+    <Compile Include="DataAccess\Repositories\CityRepository.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="JsonUtil.cs" />
+    <Compile Include="Models\City.cs" />
     <Compile Include="Models\Course.cs" />
     <Compile Include="Models\Student.cs" />
     <Compile Include="DataAccess\Interfaces\IDataAccess.cs" />
@@ -227,6 +230,8 @@
     <Content Include="DataAccess\JsonData\Course.json" />
     <Content Include="Views\Course\Card.cshtml" />
     <Content Include="Views\Course\List.cshtml" />
+    <Content Include="Views\City\Card.cshtml" />
+    <Content Include="Views\City\List.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
