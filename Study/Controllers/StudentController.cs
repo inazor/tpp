@@ -1,4 +1,5 @@
 using Newtonsoft.Json;
+using Study.Models;
 using Study.Persistence;
 using Study.Persistence.Repositories;
 using System;
@@ -18,6 +19,12 @@ namespace Study.Controllers
         {
             var students = studentRepository.GetAll();
             ViewBag.Students = students;
+
+            var fileName = Path.Combine(Config.RootDirectory, "Study", "DataAccess", "JsonData", "Student.json");
+            var studentsContent = ReadJsonFile(fileName);
+            var studentsFromJson = DeserializeJsonToType<Student>(studentsContent);
+            // ViewBag.Students = studentsFromJson;
+
             return View();
         }
 
