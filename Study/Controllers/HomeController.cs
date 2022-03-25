@@ -1,4 +1,5 @@
-﻿using Study.Persistence;
+﻿using Study.Models;
+using Study.Persistence;
 using Study.Persistence.Repositories;
 using System;
 using System.Collections.Generic;
@@ -16,10 +17,10 @@ namespace Study.Controllers
 
         public ActionResult Index()
         {
-            var students = studentRepository.GetAll();
+            var students = studentRepository.GetAll() ?? new List<Student>();
             ViewBag.Students = students;
 
-            var courses = courseRepository.GetAll();
+            var courses = courseRepository.GetAll() ?? new List<Course>();
             ViewBag.Courses = courses;
 
             return View();

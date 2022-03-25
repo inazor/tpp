@@ -21,9 +21,12 @@ namespace Study.Controllers
 
         public ActionResult Card(int id)
         {
-            var student = studentRepository.GetById(id);
+            var student = studentRepository.GetStudentWithCourse(id);
             ViewBag.Student = student;
-            
+
+            ViewBag.CourseId = student.Course?.Id;
+            ViewBag.CourseName = student.Course?.Name ?? "";
+
             return View();
         }
     }

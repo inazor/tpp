@@ -32,10 +32,6 @@ namespace Study.Persistence.Repositories
             {
                 student.Course = DataAccess.GetById<Course>((int)student.CourseId);
             }
-            else
-            {
-                student.Course = null;
-            }
             
             return student;
         }
