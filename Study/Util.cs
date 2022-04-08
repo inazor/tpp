@@ -14,7 +14,14 @@ namespace Study
 
         public static int Max(int a, int b)
         {
-            return a > b ? a : b;
+            if(a > b)
+            {
+                return a;
+            }
+            else
+            {
+                return b;
+            }
         }
 
         public static IEnumerable<int> GetOddNumbers(int limit)
