@@ -9,7 +9,13 @@ namespace Study.Persistence
 {
     public class JsonDataAccess : IDataAccess
     {
+        private IJsonUtil _jsonUtil;
 
+        public JsonDataAccess(IJsonUtil jsonUtil)
+        {
+            _jsonUtil = jsonUtil ?? new JsonUtil();
+        }
+       
         public T GetById<T>(int id) where T : class
         {
             var items = GetEntitites<T>();
@@ -22,12 +28,9 @@ namespace Study.Persistence
         public IEnumerable<T> GetEntitites<T>() where T : class
         {
             var fileName = GetFileNameOfType<T>();
-            
-            StreamReader reader = new StreamReader(fileName);
-            string json = reader.ReadToEnd();
-            reader.Close();
 
-            var result = JsonConvert.DeserializeObject<List<T>>(json);
+            string json = _jsonUtil.ReadFile(fileName);
+            var result = _jsonUtil.DeserializeJson<T>(json);
             
             return result;
         }
@@ -40,10 +43,10 @@ namespace Study.Persistence
 
             var isRemoved = items.Remove(item);
             var fileName = GetFileNameOfType<T>();
-            
-            var content = JsonConvert.SerializeObject(items);
 
-            File.WriteAllText(fileName, content);
+            var content = _jsonUtil.SerializeJson(items);
+
+            _jsonUtil.WriteAllText(fileName, content);
         }
 
         public void SaveEntity<T>(T entity) where T : class

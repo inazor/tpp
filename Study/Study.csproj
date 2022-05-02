@@ -168,9 +168,12 @@
     <Compile Include="DataAccess\Interfaces\IRepository.cs" />
     <Compile Include="DataAccess\Interfaces\IStudentRepository.cs" />
     <Compile Include="DataAccess\JsonDataAccess.cs" />
+    <Compile Include="FakeJsonUtil.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="IJsonUtil.cs" />
+    <Compile Include="JsonUtil.cs" />
     <Compile Include="Models\Course.cs" />
     <Compile Include="Models\Student.cs" />
     <Compile Include="DataAccess\Interfaces\IDataAccess.cs" />
