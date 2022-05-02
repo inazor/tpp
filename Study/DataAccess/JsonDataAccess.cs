@@ -22,8 +22,9 @@ namespace Study.Persistence
         public IEnumerable<T> GetEntitites<T>() where T : class
         {
             var fileName = GetFileNameOfType<T>();
-            var json = JsonUtil.ReadJsonFile(fileName);
-            var result = JsonUtil.DeserializeJsonToType<T>(json);
+            var jsonUtil = new JsonUtil();
+            var json = jsonUtil.ReadJsonFile(fileName);
+            var result = jsonUtil.DeserializeJsonToType<T>(json);
             return result;
         }
 
@@ -36,7 +37,8 @@ namespace Study.Persistence
             var isRemoved = items.Remove(item);
 
             var fileName = GetFileNameOfType<T>();
-            var content = JsonUtil.SerializeJson(items);
+            var jsonUtil = new JsonUtil();
+            var content = jsonUtil.SerializeJson(items);
 
             File.WriteAllText(fileName, content);
         }
