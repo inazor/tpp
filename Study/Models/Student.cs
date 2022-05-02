@@ -19,7 +19,6 @@ namespace Study.Models
         public City City { get; set; }
         public int? CityId { get; set; }
 
-
         public Student()
         {
             _studentRepository = new StudentRepository(Config.DataAccess);

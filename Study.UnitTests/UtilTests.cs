@@ -30,6 +30,16 @@ namespace Study.UnitTests
             var result = Util.Max(a, b);
 
             Assert.That(result, Is.EqualTo(expected));
+            Assert.That(() => throw new System.Exception(""), Throws.Exception);
+        }
+
+        [Test]
+        [TestCase(1, 5, 5)]
+        [TestCase(2, 5, 10)]
+        public void Multiply_WhenCalled_ReturnProduct(int a, int b, int expected)
+        {
+            var result = Util.Multiply(a, b);
+            Assert.That(result, Is.EqualTo(expected));
         }
 
         [Test]
