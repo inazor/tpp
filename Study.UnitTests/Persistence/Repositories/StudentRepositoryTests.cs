@@ -14,13 +14,13 @@ namespace Study.UnitTests.Persistence.Repositories
     [TestFixture]
     public class StudentRepositoryTests
     {
-        private Mock<IDataAccess> _sqliteDataAccess;
+        private Mock<IDataAccess> _dataAccessMock;
         private StudentRepository _sut;
 
         [SetUp]
         public void SetUp()
         {
-            _sqliteDataAccess = new Mock<IDataAccess>();
+            _dataAccessMock = new Mock<IDataAccess>();
 
             var student = new Student
             {
@@ -29,16 +29,16 @@ namespace Study.UnitTests.Persistence.Repositories
                 Level = 4,
                 CourseId = 5
             };
-            _sqliteDataAccess.Setup(sqlDA => sqlDA.GetById<Student>(It.IsAny<int>())).Returns(student);
+            _dataAccessMock.Setup(da => da.GetById<Student>(It.IsAny<int>())).Returns(student);
 
             var course = new Course
             {
                 Id = 5,
                 Name = "Specijalistički Računarstvo"
             };
-            _sqliteDataAccess.Setup(sqlDA => sqlDA.GetById<Course>(5)).Returns(course);
+            _dataAccessMock.Setup(da => da.GetById<Course>(5)).Returns(course);
 
-            _sut = new StudentRepository(_sqliteDataAccess.Object);
+            _sut = new StudentRepository(_dataAccessMock.Object);
         }
 
 
@@ -47,6 +47,10 @@ namespace Study.UnitTests.Persistence.Repositories
         {
             var student = _sut.GetStudentWithCourseAndCity(1);
             Assert.That(student.Course, Is.Not.Null);
+
+            _dataAccessMock.Verify(da => da.GetById<Student>(1));
+            _dataAccessMock.Verify(da => da.GetById<Course>(5));
+
         }
     }
 }
