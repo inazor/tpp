@@ -161,6 +161,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Config.cs" />
+    <Compile Include="Controllers\CityController.cs" />
     <Compile Include="Controllers\CourseController.cs" />
     <Compile Include="Controllers\StudentController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -168,12 +169,14 @@
     <Compile Include="DataAccess\Interfaces\IRepository.cs" />
     <Compile Include="DataAccess\Interfaces\IStudentRepository.cs" />
     <Compile Include="DataAccess\JsonDataAccess.cs" />
+    <Compile Include="DataAccess\Repositories\CityRepository.cs" />
     <Compile Include="FakeJsonUtil.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="IJsonUtil.cs" />
     <Compile Include="JsonUtil.cs" />
+    <Compile Include="Models\City.cs" />
     <Compile Include="Models\Course.cs" />
     <Compile Include="Models\Student.cs" />
     <Compile Include="DataAccess\Interfaces\IDataAccess.cs" />
@@ -196,6 +199,7 @@
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="DataAccess\JsonData\Student.json" />
+    <Content Include="DataAccess\JsonData\City.json" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -229,6 +233,8 @@
     <Content Include="DataAccess\JsonData\Course.json" />
     <Content Include="Views\Course\Card.cshtml" />
     <Content Include="Views\Course\List.cshtml" />
+    <Content Include="Views\City\Card.cshtml" />
+    <Content Include="Views\City\List.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

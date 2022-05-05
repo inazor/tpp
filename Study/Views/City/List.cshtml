@@ -1,0 +1,27 @@
+﻿@{
+    ViewBag.Title = "Gradovi";
+}
+
+<div class="jumbotron">
+    <h1>Gradovi</h1>
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+        <h2>Gradovi</h2>
+        <table>
+            <tr>
+                <td>ID</td>
+                <td>Name</td>
+            </tr>
+            @foreach (var city in ViewBag.Cities)
+            {
+            <tr>
+                <td>@city.Id</td>
+                <td>@city.Name</td>
+                <td>@Html.ActionLink("Uredi", $"Card/{city.Id}", "City")</td>
+            </tr>
+            }
+        </table>
+    </div>
+</div>
