@@ -24,11 +24,15 @@ namespace Study
             }
         }
 
-        public static IEnumerable<int> GetOddNumbers(int limit)
+        public static List<int> GetOddNumbers(int limit)
         {
+            var result = new List<int>();
+
             for (var i = 0; i <= limit; i++)
                 if (i % 2 != 0)
-                    yield return i;
+                    result.Add(i);
+
+            return result;
         }
 
         public static int Factorial(int value)
