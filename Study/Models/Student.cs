@@ -65,7 +65,16 @@ namespace Study.Models
 
         public string Introduce()
         {
-            return $"Hello. My name is {Name} and my knowledge level is {Level}";
+            var result = $"Hello! My name is {Name} and my knowledge level is {Level}.";
+            if (Name.Length > 7)
+            {
+                result += "I have a long name.";
+            }
+            if (Level > 5)
+            {
+                result += "My knowledge level is high.";
+            }
+            return result;
         }
     }
 }
