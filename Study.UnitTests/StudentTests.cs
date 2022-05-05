@@ -42,7 +42,7 @@ namespace Study.UnitTests
         public void Introduce_WhenCalled_ReturnExactIntroductionString()
         {
             var result = _student.Introduce();
-            Assert.That(result, Is.EqualTo("Hello. My name is Marko and my knowledge level is 5"));
+            Assert.That(result, Is.EqualTo("Hello! My name is Marko and my knowledge level is 5."));
         }
 
         [Test]

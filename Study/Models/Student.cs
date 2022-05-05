@@ -65,7 +65,7 @@ namespace Study.Models
 
         public string Introduce()
         {
-            return $"Hello. My name is {Name} and my knowledge level is {Level}";
+            return $"Hello! My name is {Name} and my knowledge level is {Level}.";
         }
     }
 }
