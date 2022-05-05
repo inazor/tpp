@@ -73,6 +73,15 @@ namespace Study.UnitTests
         }
 
         [Test]
+        [TestCase(1, 5, 5)]
+        [TestCase(2, 5, 10)]
+        public void Multiply_WhenCalled_ReturnProduct(int a, int b, int expected)
+        {
+            var result = Util.Multiply(a, b);
+            Assert.That(result, Is.EqualTo(expected));
+        }
+
+        [Test]
         [TestCase(1, 1)]
         [TestCase(2, 2)]
         [TestCase(5, 120)]
