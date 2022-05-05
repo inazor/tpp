@@ -82,6 +82,41 @@ namespace Study.UnitTests
         }
 
         [Test]
+        public void GetOddNumbers_LimitIsGreaterThanZero_ReturnCollectionIncludingOne()
+        {
+            var result = Util.GetOddNumbers(5);
+            Assert.That(result, Does.Contain(1));
+        }
+
+        [Test]
+        public void GetOddNumbers_LimitIsGreaterThanZero_ReturnCorrectNumberOfElements()
+        {
+            var result = Util.GetOddNumbers(5);
+            Assert.That(result, Has.Count.EqualTo(3));
+        }
+
+        [Test]
+        public void GetOddNumbers_LimitIsGreaterThanZero_ReturnOddNumbers()
+        {
+            var result = Util.GetOddNumbers(5);
+            Assert.That(result, Is.EquivalentTo(new[] { 1, 3, 5 }));
+        }
+
+        [Test]
+        public void GetOddNumbers_LimitIsGreaterThanZero_ReturnNumbersInAscendingOrder()
+        {
+            var result = Util.GetOddNumbers(5);
+            Assert.That(result, Is.Ordered.Ascending);
+        }
+
+        [Test]
+        public void GetOddNumbers_LimitIsGreaterThanZero_ReturnNumbersUnique()
+        {
+            var result = Util.GetOddNumbers(5);
+            Assert.That(result, Is.Unique);
+        }
+
+        [Test]
         [TestCase(1, 1)]
         [TestCase(2, 2)]
         [TestCase(5, 120)]
