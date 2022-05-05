@@ -24,6 +24,8 @@ namespace Study
             }
         }
 
+        public static Func<int, int, int> Multiply = (x, y) => x * y;
+
         public static IEnumerable<int> GetOddNumbers(int limit)
         {
             for (var i = 0; i <= limit; i++)
