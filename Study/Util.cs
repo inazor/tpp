@@ -24,6 +24,8 @@ namespace Study
             }
         }
 
+        public static Func<int, int, int> Multiply = (x, y) => x * y;
+
         public static List<int> GetOddNumbers(int limit)
         {
             var result = new List<int>();
