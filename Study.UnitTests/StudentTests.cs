@@ -90,7 +90,7 @@ namespace Study.UnitTests.Core.Models
         public void Introduce_WhenCalled_ReturnsIntroductionString()
         {
             var result = _sut.Introduce();
-            Assert.That(result, Is.EqualTo("Hello. My name is Mate and my knowledge level is 1"));
+            Assert.That(result, Is.EqualTo("Hello! My name is Mate and my knowledge level is 1."));
         }
 
         // General test
@@ -99,6 +99,38 @@ namespace Study.UnitTests.Core.Models
         {
             var result = _sut.Introduce();
             Assert.That(result, Does.Contain("mate").IgnoreCase.And.Contain("1"));
+        }
+
+        [Test]
+        public void Introduce_ShortNameAndLowLevel_ReturnCorrectString()
+        {
+            var student = new Student() { Name = "Igor", Level = 1 };
+            var result = student.Introduce();
+            Assert.That(result, Does.Not.Contain("long name").And.Not.Contain("level is high"));
+        }
+
+        [Test]
+        public void Introduce_ShortNameAndHighLevel_ReturnCorrectString()
+        {
+            var student = new Student() { Name = "Marko", Level = 50 };
+            var result = student.Introduce();
+            Assert.That(result, Does.Not.Contain("long name").And.Contain("level is high"));
+        }
+
+        [Test]
+        public void Introduce_LongNameAndLowLevel_ReturnCorrectString()
+        {
+            var student = new Student() { Name = "Archibald", Level = 4 };
+            var result = student.Introduce();
+            Assert.That(result, Does.Contain("long name").And.Not.Contain("level is high"));
+        }
+
+        [Test]
+        public void Introduce_LongNameAndHighLevel_ReturnCorrectString()
+        {
+            var student = new Student() { Name = "Zvonimir", Level = 9999 };
+            var result = student.Introduce();
+            Assert.That(result, Does.Contain("long name").And.Contain("level is high"));
         }
 
         [Test]
