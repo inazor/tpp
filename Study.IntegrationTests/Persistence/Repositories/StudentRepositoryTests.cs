@@ -38,7 +38,7 @@ namespace Study.IntegrationTests.Persistence.Repositories
         }
 
         [Test]
-        public void Add_JsonDataAccess_AddStudentToDatabase()
+        public void Remove_JsonDataAccess_RemoveStudentFromDatabase()
         {
             // Arrange
             var sut = new StudentRepository(new JsonDataAccess());
