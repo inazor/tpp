@@ -165,6 +165,7 @@
     <Compile Include="Controllers\CourseController.cs" />
     <Compile Include="Controllers\StudentController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="DataAccess\Interfaces\ICityRepository.cs" />
     <Compile Include="DataAccess\Interfaces\ICourseRepository.cs" />
     <Compile Include="DataAccess\Interfaces\IRepository.cs" />
     <Compile Include="DataAccess\Interfaces\IStudentRepository.cs" />
