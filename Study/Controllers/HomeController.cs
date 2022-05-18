@@ -1,4 +1,5 @@
-﻿using Study.DataAccess.Repositories;
+﻿using Study.Core.Repositories;
+using Study.DataAccess.Repositories;
 using Study.Models;
 using Study.Persistence;
 using Study.Persistence.Repositories;
@@ -12,19 +13,33 @@ namespace Study.Controllers
 {
     public class HomeController : Controller
     {
-        private StudentRepository studentRepository = new StudentRepository(Config.DataAccess);
-        private CourseRepository courseRepository = new CourseRepository(Config.DataAccess);
-        private CityRepository cityRepository = new CityRepository(Config.DataAccess);
+        private readonly IStudentRepository _studentRepository;
+        private readonly ICourseRepository _courseRepository;
+        private readonly ICityRepository _cityRepository;
+
+        public HomeController(IStudentRepository studentRepository, ICourseRepository courseRepository, ICityRepository cityRepository)
+        {
+            _studentRepository = studentRepository;
+            _courseRepository = courseRepository;
+            _cityRepository = cityRepository;
+        }
+
+        public HomeController()
+        {
+            _studentRepository =  new StudentRepository(Config.DataAccess);
+            _courseRepository =  new CourseRepository(Config.DataAccess);
+            _cityRepository =  new CityRepository(Config.DataAccess);
+        }
 
         public ActionResult Index()
         {
-            var students = studentRepository.GetAll() ?? new List<Student>();
+            var students = _studentRepository.GetAll() ?? new List<Student>();
             ViewBag.Students = students;
 
-            var courses = courseRepository.GetAll() ?? new List<Course>();
+            var courses = _courseRepository.GetAll() ?? new List<Course>();
             ViewBag.Courses = courses;
 
-            var cities = cityRepository.GetAll() ?? new List<City>();
+            var cities = _cityRepository.GetAll() ?? new List<City>();
             ViewBag.Cities = cities;
 
             return View();

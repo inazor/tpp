@@ -43,7 +43,13 @@ namespace Study.Persistence
 
         public void SaveEntity<T>(T entity) where T : class
         {
-            throw new NotImplementedException();
+            var items = GetEntitites<T>().ToList();
+            items.Add(entity);
+
+            var fileName = GetFileNameOfType<T>();
+            var content = JsonUtil.SerializeJson(items);
+
+            File.WriteAllText(fileName, content);
         }
 
         public void Update<T>(int id, T entity) where T : class

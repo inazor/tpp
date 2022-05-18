@@ -8,7 +8,7 @@ using System.Web;
 
 namespace Study.DataAccess.Repositories
 {
-    public class CityRepository : Repository<City>
+    public class CityRepository : Repository<City>, ICityRepository
     {
         public CityRepository(IDataAccess dataAccess) : base(dataAccess)
         {

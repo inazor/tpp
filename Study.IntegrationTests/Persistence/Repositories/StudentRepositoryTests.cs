@@ -42,6 +42,5 @@ namespace Study.IntegrationTests.Persistence.Repositories
             // Tear down
             _sut.Remove(newestStudent.Id);
         }
-
     }
 }
