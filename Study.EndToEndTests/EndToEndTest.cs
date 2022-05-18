@@ -16,6 +16,7 @@ namespace Study.EndToEndTests
         public void Setup()
         {
             _driver = new ChromeDriver(Config.RootDirectory);
+            NavigateHome();
         }
 
         [TearDown]
@@ -25,10 +26,8 @@ namespace Study.EndToEndTests
         }
 
         [Test]
-        public void Test1()
+        public void TestStudentiPage()
         {
-            NavigateHome();
-
             var studentListLinkElement = _driver.FindElement(By.LinkText("Studenti"));
 
             studentListLinkElement.Click();
