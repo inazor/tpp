@@ -13,34 +13,49 @@ namespace Study.IntegrationTests.Persistence.Repositories
     [TestFixture]
     public class StudentRepositoryTests
     {
-        private StudentRepository _sut;
-
-        [SetUp]
-        public void SetUp()
-        {
-            _sut = new StudentRepository(new SqliteDataAccess());
-        }
-
         [Test]
-        public void Add_WhenCalled_AddStudentToDatabase()
-        {
+        public void Add_SqliteDataAccess_AddStudentToDatabase()
+        {   
             // Arrange
+            var sut = new StudentRepository(new SqliteDataAccess());
+
             var student = new Student() { 
                 Name = "Mate",
                 Level = 5,
             };
 
             // Act
-            _sut.Add(student);
+            sut.Add(student);
 
             // Assert
-            var students = _sut.GetAll();
+            var students = sut.GetAll();
             var newestStudent = students.OrderByDescending(s => s.Id).FirstOrDefault();
 
             Assert.That(newestStudent.Name == student.Name && newestStudent.Level == student.Level);
 
             // Tear down
-            _sut.Remove(newestStudent.Id);
+            sut.Remove(newestStudent.Id);
+        }
+
+        [Test]
+        public void Add_JsonDataAccess_AddStudentToDatabase()
+        {
+            // Arrange
+            var sut = new StudentRepository(new JsonDataAccess());
+
+            var student = sut.GetById(1);
+
+            // Act
+            sut.Remove(1);
+
+            // Assert
+            var students = sut.GetAll();
+            var deletedStudent = students.FirstOrDefault(s => s.Id == 1);
+
+            Assert.That(deletedStudent, Is.Null);
+
+            // Tear down
+            sut.Add(student);
         }
     }
 }
