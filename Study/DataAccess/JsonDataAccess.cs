@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Web;
 
 namespace Study.Persistence
@@ -10,6 +11,11 @@ namespace Study.Persistence
     public class JsonDataAccess : IDataAccess
     {
         private IJsonUtil _jsonUtil;
+
+        public JsonDataAccess()
+        {
+            _jsonUtil = new JsonUtil();
+        }
 
         public JsonDataAccess(IJsonUtil jsonUtil)
         {
@@ -51,7 +57,24 @@ namespace Study.Persistence
 
         public void SaveEntity<T>(T entity) where T : class
         {
-            throw new NotImplementedException();
+            var items = GetEntitites<T>().ToList();
+            items.Add(entity);
+
+            var type = typeof(T);
+            var properties = type.GetProperties().Where(prop => ShouldSave(prop));
+            var mappedItems = items.Select(item => {
+                var res = new Dictionary<string, object> { };
+                foreach (var property in properties)
+                {
+                    res[property.Name] = property.GetValue(item);
+                }
+                return res;
+            }).ToList();
+
+            var fileName = GetFileNameOfType<T>();
+            var content = _jsonUtil.SerializeJson(mappedItems);
+
+            File.WriteAllText(fileName, content);
         }
 
         public void Update<T>(int id, T entity) where T : class
@@ -65,6 +88,24 @@ namespace Study.Persistence
             var className = specificClass.Name;
             var fileName = Path.Combine(Config.RootDirectory, "Study", "DataAccess", "JsonData", $"{className}.json");
             return fileName;
+        }
+
+        private bool ShouldSave(PropertyInfo propertyInfo)
+        {
+            if (propertyInfo.PropertyType.IsPrimitive)
+            {
+                return true;
+            }
+            if (propertyInfo.PropertyType == typeof(string))
+            {
+                return true;
+            }
+            if (propertyInfo.PropertyType == typeof(Nullable<int>))
+            {
+                return true;
+            }
+
+            return false;
         }
     }
 }
