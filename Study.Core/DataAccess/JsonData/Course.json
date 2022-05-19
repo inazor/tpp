@@ -1,0 +1,15 @@
+﻿[
+  {
+    "Id": 1,
+    "Name": "TPP",
+    "Level": 7,
+    "Description": "Testiranje programske podrške"
+  },
+  {
+    "Id": 2,
+    "Name": "MAT1",
+    "Level": 7,
+    "Description": "Matematika 1"
+  }
+]
+  
