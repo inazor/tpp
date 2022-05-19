@@ -1,4 +1,5 @@
-﻿using Study.Core.Repositories;
+﻿using Newtonsoft.Json;
+using Study.Core.Repositories;
 using Study.Models;
 using Study.Persistence.Repositories;
 using System;
@@ -23,31 +24,37 @@ namespace Study.API.Controllers
             _studentRepository = new StudentRepository(Config.DataAccess);
         }
 
-        // GET api/values
+        // GET api/student
         public IEnumerable<Student> Get()
         {
             return _studentRepository.GetAll();
         }
 
-        // GET api/values/5
-        public string Get(int id)
+        // GET api/student/5
+        public Student Get(int id)
         {
-            return "value";
+            return _studentRepository.GetById(id);
         }
 
-        // POST api/values
-        public void Post([FromBody] string value)
+        // POST api/student
+        public Student Post([FromBody] string value)
         {
+            var student = JsonConvert.DeserializeObject<Student>(value);
+            _studentRepository.Add(student);
+            return student;
         }
 
-        // PUT api/values/5
+        // PUT api/student/5
         public void Put(int id, [FromBody] string value)
         {
+            var student = JsonConvert.DeserializeObject<Student>(value);
+            _studentRepository.Update(id, student);
         }
 
-        // DELETE api/values/5
+        // DELETE api/student/5
         public void Delete(int id)
         {
+            _studentRepository.Remove(id);
         }
     }
 }
