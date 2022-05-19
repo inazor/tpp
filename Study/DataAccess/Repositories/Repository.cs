@@ -1,4 +1,5 @@
 ﻿using Study.Core.Repositories;
+using Study.Models.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -6,7 +7,7 @@ using System.Web;
 
 namespace Study.Persistence.Repositories
 {
-    public class Repository<T> : IRepository<T> where T : class
+    public class Repository<T> : IRepository<T> where T : IModel
     {
         protected IDataAccess DataAccess;
 
@@ -15,9 +16,10 @@ namespace Study.Persistence.Repositories
             DataAccess = dataAccess;
         }
 
-        public void Add(T entity)
+        public int Add(T entity)
         {
-            DataAccess.SaveEntity(entity);
+            entity.Id = DataAccess.SaveEntity(entity);
+            return entity.Id;
         }
 
         public IEnumerable<T> GetAll()

@@ -178,6 +178,7 @@
     <Compile Include="Models\City.cs" />
     <Compile Include="Models\Country.cs" />
     <Compile Include="Models\Course.cs" />
+    <Compile Include="Models\Interfaces\IModel.cs" />
     <Compile Include="Models\Student.cs" />
     <Compile Include="DataAccess\Interfaces\IDataAccess.cs" />
     <Compile Include="DataAccess\JsonDataAccess.cs" />
