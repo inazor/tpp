@@ -1,4 +1,5 @@
 ﻿using Dapper;
+using Study.Models.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -14,7 +15,7 @@ namespace Study.Persistence
 {
     public class SqliteDataAccess : IDataAccess
     {
-        public IEnumerable<T> GetEntitites<T>() where T: class
+        public IEnumerable<T> GetEntitites<T>() where T : IModel
         {
             using (var connection = new SQLiteConnection(GetConnectionString()))
             {
@@ -24,7 +25,7 @@ namespace Study.Persistence
             }
         }
 
-        public void SaveEntity<T>(T entity) where T : class
+        public int SaveEntity<T>(T entity) where T : IModel
         {
             using (var connection = new SQLiteConnection(GetConnectionString()))
             {
@@ -33,13 +34,13 @@ namespace Study.Persistence
                 var properties = type.GetProperties().Where(prop => ShouldSave(prop));
                 var propertyNames = properties.Select(info => info.Name);
                 var propertyNamesWithAt = propertyNames.Select(name => $"@{name}");
-                var sql = $"insert into {tableName} ({string.Join(",", propertyNames)}) values ({string.Join(",", propertyNamesWithAt)})";
+                var sql = $"insert into {tableName} ({string.Join(",", propertyNames)}) values ({string.Join(",", propertyNamesWithAt)}) RETURNING Id";
 
-                connection.Execute(sql, entity);
+                return connection.QuerySingle<int>(sql, entity);
             }
         }
 
-        public T GetById<T>(int id) where T : class
+        public T GetById<T>(int id) where T : IModel
         {
             using (var connection = new SQLiteConnection(GetConnectionString()))
             {
@@ -49,7 +50,7 @@ namespace Study.Persistence
             }
         }
 
-        public void Update<T>(int id, T entity) where T : class
+        public void Update<T>(int id, T entity) where T : IModel
         {
             using (var connection = new SQLiteConnection(GetConnectionString()))
             {
@@ -62,8 +63,8 @@ namespace Study.Persistence
                 connection.Execute(sql, entity);
             }
         }
-        
-        public void Remove<T>(int id) where T : class
+
+        public void Remove<T>(int id) where T : IModel
         {
             using (var connection = new SQLiteConnection(GetConnectionString()))
             {
@@ -75,7 +76,7 @@ namespace Study.Persistence
 
         private bool ShouldSave(PropertyInfo propertyInfo)
         {
-            if(propertyInfo.Name == "Id")
+            if (propertyInfo.Name == "Id")
             {
                 return false;
             }
@@ -83,7 +84,11 @@ namespace Study.Persistence
             {
                 return true;
             }
-            if(propertyInfo.PropertyType == typeof(string))
+            if (propertyInfo.PropertyType == typeof(string))
+            {
+                return true;
+            }
+            if (propertyInfo.PropertyType == typeof(int?))
             {
                 return true;
             }

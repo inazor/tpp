@@ -1,4 +1,5 @@
 using Study.Core.Repositories;
+using Study.Models.Interfaces;
 using Study.Persistence.Repositories;
 using System;
 using System.Collections.Generic;
@@ -7,7 +8,7 @@ using System.Web;
 
 namespace Study.Models
 {
-    public class Student
+    public class Student : IModel
     {
         private IStudentRepository _studentRepository;
 
@@ -16,6 +17,8 @@ namespace Study.Models
         public int Level { get; set; }
         public Course Course { get; set; }
         public int? CourseId { get; set; }
+        public City City { get; set; }
+        public int? CityId { get; set; }
 
         public Student()
         {
@@ -45,7 +48,7 @@ namespace Study.Models
 
             foreach (var student in students)
             {
-                if(student.Course.Id == Course.Id)
+                if (student.CourseId == CourseId && Id != student.Id)
                 {
                     result++;
                 }

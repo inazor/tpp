@@ -31,6 +31,7 @@ namespace Study.UnitTests.Core.Models
             {
                 new Student()
                 {
+                    Id = 2,
                     Name = "Jure",
                     Level = 1,
                     Course = _course,
@@ -38,6 +39,7 @@ namespace Study.UnitTests.Core.Models
                 },
                 new Student()
                 {
+                    Id = 3,
                     Name = "Ante",
                     Level = 1,
                     Course = _course,
@@ -47,6 +49,7 @@ namespace Study.UnitTests.Core.Models
             _studentRepository.Setup(repo => repo.GetStudentsWithCourses()).Returns(studentsWithCourses);
             _sut = new Student(_studentRepository.Object)
             {
+                Id = 1,
                 Name = "Mate",
                 Level = 1,
                 Course = _course,

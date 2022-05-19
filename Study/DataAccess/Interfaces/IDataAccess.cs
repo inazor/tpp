@@ -1,13 +1,14 @@
-﻿using System.Collections.Generic;
+﻿using Study.Models.Interfaces;
+using System.Collections.Generic;
 
 namespace Study.Persistence
 {
     public interface IDataAccess
     {
-        IEnumerable<T> GetEntitites<T>() where T : class;
-        void SaveEntity<T>(T entity) where T : class;
-        T GetById<T>(int id) where T : class;
-        void Update<T>(int id, T entity) where T : class;
-        void Remove<T>(int id) where T : class;
+        IEnumerable<T> GetEntitites<T>() where T : IModel;
+        int SaveEntity<T>(T entity) where T : IModel;
+        T GetById<T>(int id) where T : IModel;
+        void Update<T>(int id, T entity) where T : IModel;
+        void Remove<T>(int id) where T : IModel;
     }
 }
