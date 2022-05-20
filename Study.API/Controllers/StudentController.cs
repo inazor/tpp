@@ -33,7 +33,7 @@ namespace Study.API.Controllers
         // GET api/student/5
         public Student Get(int id)
         {
-            return _studentRepository.GetById(id);
+            return _studentRepository.GetStudentWithCourseAndCity(id);
         }
 
         // POST api/student
