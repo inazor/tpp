@@ -45,7 +45,7 @@ namespace Study.Controllers
             var cities = _cityRepository.GetAll() ?? new List<City>();
             ViewBag.Cities = cities;
 
-            var countries = _countryRepository.GetAll() ?? new List<Country>();
+            var countries = _countryRepository?.GetAll() ?? new List<Country>();
             ViewBag.Countries = countries;
 
             return View();
