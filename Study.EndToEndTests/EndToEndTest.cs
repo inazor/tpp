@@ -30,7 +30,7 @@ namespace Study.EndToEndTests
         {
             NavigateToPage("Home/Contact");
 
-            var navigationHeaderButton = _driver.FindElement(By.XPath("//a[contains(text(),'Application name')]"));
+            var navigationHeaderButton = _driver.FindElement(By.XPath("//a[contains(text(),'Study')]"));
             navigationHeaderButton.Click();
             Assert.That(_driver.Title, Does.StartWith("Home Page"));
         }
