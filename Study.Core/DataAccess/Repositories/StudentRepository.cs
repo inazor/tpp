@@ -40,6 +40,10 @@ namespace Study.Persistence.Repositories
         public Student GetStudentWithCourseAndCity(int id)
         {
             var student = DataAccess.GetById<Student>(id);
+            if(student is null)
+            {
+                return null;
+            }
 
             if (student.CourseId != null)
             {
