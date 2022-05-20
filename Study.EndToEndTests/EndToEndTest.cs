@@ -1,4 +1,4 @@
-using NUnit.Framework;
+﻿using NUnit.Framework;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using System;
@@ -23,6 +23,38 @@ namespace Study.EndToEndTests
         public void TearDown()
         {
             _driver.Dispose();
+        }
+
+        [Test]
+        public void SubgroupLocator()
+        {
+            var columns = _driver.FindElements(By.ClassName("col-md-6"));
+            var studentsColumn = columns[0];
+
+            var studentTable = studentsColumn.FindElement(By.TagName("table"));
+            var tbody = studentTable.FindElement(By.TagName("tbody"));
+            var trs = tbody.FindElements(By.TagName("tr"));
+            var tr = trs[2];
+            var tds = tr.FindElements(By.TagName("td"));
+            var td = tds[1];
+            var result = td.Text;
+            Assert.That(result, Is.EqualTo("Jure Jurić"));
+        }
+
+        [Test]
+        public void CssSelectorLocator()
+        {
+            var td = _driver.FindElement(By.CssSelector(".col-md-6:nth-child(2) table tbody tr:nth-child(4) td:nth-child(2)"));
+            var result = td.Text;
+            Assert.That(result, Is.EqualTo("OOP"));
+        }
+
+        [Test]
+        public void XPathLocator()
+        {
+            var td = _driver.FindElement(By.XPath("//div[h2[contains(text(),'Gradovi')]]/table/tbody/tr[2]/td[1]"));
+            var result = td.Text;
+            Assert.That(result, Is.EqualTo("1"));
         }
 
         [Test]
