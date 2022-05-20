@@ -37,24 +37,30 @@ namespace Study.API.Controllers
         }
 
         // POST api/student
-        public Student Post([FromBody] string value)
+        public Student Post([FromBody] Student value)
         {
-            var student = JsonConvert.DeserializeObject<Student>(value);
-            _studentRepository.Add(student);
-            return student;
+            _studentRepository.Add(value);
+            return _studentRepository.GetStudentWithCourseAndCity(value.Id);
         }
 
         // PUT api/student/5
-        public void Put(int id, [FromBody] string value)
+        public Student Put(int id, [FromBody] Student value)
         {
-            var student = JsonConvert.DeserializeObject<Student>(value);
-            _studentRepository.Update(id, student);
+            _studentRepository.Update(id, value);
+            return _studentRepository.GetStudentWithCourseAndCity(id);
         }
 
         // DELETE api/student/5
-        public void Delete(int id)
+        public bool Delete(int id)
         {
+            var student = _studentRepository.GetStudentWithCourseAndCity(id);
+            if (student is null)
+            {
+                return false;
+            }
+
             _studentRepository.Remove(id);
+            return true;
         }
     }
 }
