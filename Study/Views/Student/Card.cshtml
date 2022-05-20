@@ -1,53 +1,73 @@
-﻿@{
+﻿@model Study.Models.Student
+
+@using (Html.BeginForm("Save", "Student", FormMethod.Post))
+{
     ViewBag.Title = $"Student" + ViewBag.Student.Name;
-}
 
-<div class="jumbotron">
-    <h1>Student @ViewBag.Student.Name</h1>
-</div>
-
-<div class="row">
-    <div class="col-md-6">
-        <div class="row">
-            <div class="col-md-2">
-                Id
-            </div>
-            <div class="col-md-10">
-                <span id="Id">@ViewBag.Student.Id</span>
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="col-md-2">
-                Name
-            </div>
-            <div class="col-md-10">
-                <input id="Name" value="@ViewBag.Student.Name" />
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-2">
-                CourseId
-            </div>
-            <div class="col-md-10">
-                <span id="CourseId">@ViewBag.CourseId</span>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-2">
-                Course
-            </div>
-            <div class="col-md-10">
-                <span id="CourseName">@ViewBag.CourseName</span>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-2">
-                City
-            </div>
-            <div class="col-md-10">
-                <span id="CourseName">@ViewBag.CityName</span>
-            </div>
-        </div>
+    <div class="jumbotron">
+        <h1>Student @ViewBag.Student.Name</h1>
     </div>
-</div>
+
+    <div class="row">
+        <div class="col-md-6">
+            <div class="row">
+                <div class="col-md-2">
+                    Id
+                </div>
+                <div class="col-md-10">
+                    @Html.TextBoxFor(model => Model.Id, new { @Value = ViewBag.Student.Id, @readonly = "readonly" })
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-2">
+                    Name
+                </div>
+                <div class="col-md-10">
+                    @Html.TextBoxFor(model => model.Name, new { @Value = ViewBag.Student.Name })
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-2">
+                    Level
+                </div>
+                <div class="col-md-10">
+                    @Html.TextBoxFor(model => model.Level, new { @Value = ViewBag.Student.Level })
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-2">
+                    CourseId
+                </div>
+                <div class="col-md-10">
+                    @Html.TextBoxFor(model => Model.CourseId, new { @Value = ViewBag.Student.CourseId, @readonly = "readonly" })
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-2">
+                    Course
+                </div>
+                <div class="col-md-10">
+                    <span id="CourseName">@ViewBag.CourseName</span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-2">
+                    CityId
+                </div>
+                <div class="col-md-10">
+                    @Html.TextBoxFor(model => Model.CityId, new { @Value = ViewBag.Student.CityId, @readonly = "readonly" })
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-2">
+                    City
+                </div>
+                <div class="col-md-10">
+                    <span id="CityName">@ViewBag.CityName</span>
+                </div>
+            </div>
+        </div>
+        <button type="submit">Save</button>
+    </div>
+}
