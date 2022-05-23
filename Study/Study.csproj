@@ -171,6 +171,7 @@
     <Compile Include="DataAccess\Interfaces\IStudentRepository.cs" />
     <Compile Include="DataAccess\Repositories\CityRepository.cs" />
     <Compile Include="DataAccess\Interfaces\ICityRepository.cs" />
+    <Compile Include="DataAccess\Repositories\CountryRepository.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>

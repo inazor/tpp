@@ -32,6 +32,7 @@ namespace Study.Controllers
             _studentRepository =  new StudentRepository(Config.DataAccess);
             _courseRepository =  new CourseRepository(Config.DataAccess);
             _cityRepository =  new CityRepository(Config.DataAccess);
+            _countryRepository = new CountryRepository(Config.DataAccess);
         }
 
         public ActionResult Index()
