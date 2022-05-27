@@ -8,7 +8,7 @@ namespace Study
 {
     public static class Config
     {
-        public const string RootDirectory = "C:\\Study";
+        public const string RootDirectory = "D:\\TPP\\Study";
         public static IDataAccess DataAccess => new SqliteDataAccess();
     }
 }
